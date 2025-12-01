@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AlaSQL</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="https://cdn.jsdelivr.net/npm/alasql@0.4"></script>
+    <script>
+      function init() {
+        console.log("hi!");
+        console.log(alasql);
+        
+        // A) Traditional SQL
+        alasql("CREATE TABLE orders (id number, amount number, created_at date)");
+
+        alasql(`INSERT INTO orders VALUES 
+          (1, ${Math.random() * 100}, '2018-09-15 03:04:19'),
+          (2, ${Math.random() * 100}, '2018-09-15 04:02:19'),
+          (3, ${Math.random() * 100}, '2018-09-15 05:27:23'),
+          (4, ${Math.random() * 100}, '2018-09-15 06:23:34'),
+          (5, ${Math.random() * 100}, '2018-09-15 09:01:20')
+        `);
+
+        var res = alasql("SELECT * FROM orders order by created_at");
+
+      }
+      
+      function run() {
+        var query = document.getElementById("query").value;
+        runQuery(query);
+      }
+      
+      function runQuery(query) {
+        var res = alasql(query);
+        updateView(JSON.stringify(res, null, 2));
+      }
+      
+      function updateView(value) {
+        document.getElementById("results").innerHTML = value; 
+        document.getElementById("results").innerText = value;
+      }
+    
+    </script>
+  </head>  
+  <body onload="init()">
+    <h1>AlaSQL Demo</h1>
+    <input type="text" value="select * from orders" id="query" class="query"/>
+    <input type="button" value="Submit" onclick="run()" class="button-primary"/>
+    <br>
+    <h2>Results</h2>
+    <textarea rows="30" cols="100" id="results">
+    </textarea>
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+#wrapper {
+  width: 100vw;
+  height: 100vh;
+  /*background-color: #CCC;*/
+}
+
+body, h1 {
+ transition: 50ms all; 
+}
+
+#config {
+  font-family: 'Courier New', Courier, monospace;
+  word-wrap: break-word;
+  line-height: 1.5em;
+}

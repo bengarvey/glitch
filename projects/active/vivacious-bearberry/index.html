@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Process Miner</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  </head>  
+  <body onload="start()">
+    <h1>
+      Process Miner
+    </h1>
+    <svg width="1200" height="500" id="the_dream"></svg>
+    <p id="date"></p>
+  </body>
+  <script>
+
+    var world = null;
+    const d3 = window.d3
+    var the_dream = d3.select("#the_dream");
+    the_dream
+      .attr("width", window.innerWidth)
+      .attr("height", window.innerHeight)
+    
+    function start() {
+      console.log("Starting up");
+      world = new World;
+      world.start();
+      
+      the_dream.selectAll("rect")
+        .data(world.destinations)
+          .enter()
+          .append("rect")
+          .attr("height", 0)
+          .attr("width", 0)
+          .attr("fill", '#000000')
+          .attr("x", (d) => d.x)
+          .attr("y", (d) => d.y)
+          .transition()
+          .duration(350)
+          .attr("transform", "translate(-25, -25)")
+          .attr("height", 50)
+          .attr("width", 50);
+      
+        setInterval(update, 10);
+    }
+    
+    function update() {
+      world.pc.update(world.date);
+      
+      the_dream.selectAll("rect")
+        .data(world.destinations)
+          .transition()
+          .duration(10)
+          .attr("transform", d => `translate(${d.size/4 * -1}, ${d.size/4 * -1})`)
+          .attr("height", d => 10 + (d.size/3))
+          .attr("width", d => 10 + (d.size/3));
+      
+      the_dream.selectAll("circle")
+        .data(world.pc.particles)
+          .enter()
+          .append("circle")
+          .attr("fill", function(d) { return d.color; })
+          .attr("r", function(d) { return d.r; })
+          .attr("cx", function(d) {return d.x; })
+          .attr("cy", function(d) { return d.y; })
+
+      the_dream.selectAll("circle")
+        .data(world.pc.particles)
+          .attr("fill", function(d) { return d.color; })
+          .attr("r", function(d) { return d.r; })
+          .attr("cx", function(d) { return d.x; })
+          .attr("cy", function(d) { return d.y; })
+      
+      the_dream.selectAll("circle")
+        .data(world.pc.particles)
+          .exit()
+          .remove();
+      }
+  
+  </script>
+</html>

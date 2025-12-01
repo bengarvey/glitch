@@ -1,0 +1,61 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;">
+    <title>Dot-Cats</title>
+  <style>
+      body {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      #map {
+        padding: 0px;
+        margin: 0px;
+      }
+    </style>
+    <script src="global.js"></script>
+    <script src="Entity.js"></script>
+    <script src="EntityGenerator.js"></script>
+    <script src="Prey.js"></script>
+    <script src="PreyGenerator.js"></script>
+    <script src="NameGenerator.js"></script>
+    <script src="Cat.js"></script>
+    <script src="CatGenerator.js"></script>
+    <script src="Clan.js"></script>
+    <script src="Cell.js"></script>
+    <script src="Grid.js"></script>
+    <script src="Territory.js"></script>
+    <script src="TerritoryGenerator.js"></script>
+    <script src="HoverMenu.js"></script>
+    <script src="Draw.js"></script>
+    <script src="World.js"></script>
+  </head>
+  <body onload="go()">
+    <canvas id="map" height="400" width="400">
+      This is where the canvas would be if your browser supported it.
+    </canvas>
+  </body>
+  <script>
+    function go() { 
+      var drawing_canvas = document.getElementById('map');
+      var context = drawing_canvas.getContext('2d');
+      var draw = new Draw(context);
+      var terGen = new TerritoryGenerator();
+      var catGen = new CatGenerator();
+      var home = terGen.generate();
+      var cats = catGen.generate(4, home);
+
+      cats[0].age = 500;
+      cats[1].age = 1000;
+      cats[2].age = 3000;
+      cats[3].age = 5000;
+
+      cats.forEach( (cat, index) => { 
+        cat.color = randomColor();
+        draw.cat(100 * index + 50, 100, cat, true);
+      });
+  
+    };
+  </script>
+</html>
