@@ -1,2 +1,0 @@
-# autoband
-A band generator
