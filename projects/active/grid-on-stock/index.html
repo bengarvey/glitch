@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;">
+    <title>bengarvey.com</title>
+    <style>
+      body {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      #map {
+        padding: 0px;
+        margin: 0px;
+      }
+    </style>
+    <script>
+      function preloadImage(url) {
+          var img=new Image();
+          img.src=url;
+      }
+
+      preloadImage('https://cdn.glitch.com/1bd03cb6-3462-41cc-9a38-13e78d7e35b2%2Fhouse.jpg?v=1617851340882');
+      </script>
+      <script src="Draw.js"></script>
+    <script src="world.js"></script>
+  </head>
+  <body>
+    <canvas id="map">
+      This is where the canvas would be if your browser supported it.
+    </canvas>
+  </body>
+  <script>
+    World('map');
+  </script>
+</html>

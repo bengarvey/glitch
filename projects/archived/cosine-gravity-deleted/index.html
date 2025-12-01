@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0 0 0 0
+      }
+    </style>
+    <script src="Circle.js"></script>
+    <script src="CircleFactory.js"></script>
+    <script src="Gravity.js"></script>
+    <script src="World.js"></script>
+    <script>
+      function init() {
+        var cf = new CircleFactory();
+        var canvas = document.getElementById('world');
+        var world = new World(1000, 1000, 5, 'bounce', canvas);
+        circles = cf.generate(240);
+        world.addEntities(circles);
+        world.start();
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <canvas id="world" height="10" width="10"></canvas>
+  </body>
+</html>

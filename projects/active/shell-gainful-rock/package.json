@@ -1,0 +1,30 @@
+{
+  "name": "glitch-in-bio",
+  "version": "0.0.1",
+  "description": "Your very own link-in-bio app.",
+  "main": "index.html",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "handlebars": "^4.7.6",
+    "@glitchdotcom/vite-plugin-handlebars": "^1.6.2",
+    "vite": "^2.5.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead"
+  ],
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/glitch-in-bio"
+  },
+  "glitch": {
+    "projectType": "generated_static"
+  },
+  "dependencies": {}
+}

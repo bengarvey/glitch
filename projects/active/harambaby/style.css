@@ -1,0 +1,129 @@
+/* CSS files add styling rules to your content */
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+}
+
+h1 {
+  color: #333333;
+}
+
+.query {
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+.button-primary {
+  margin: 5px;
+  padding: 5px;
+  width: 100px;
+  min-height: 30px;
+  background-color: green;
+  color: white;
+}
+
+textarea {
+  margin: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.baby-form {
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 0 0 0 0;
+  font: 16px;
+}
+.baby-form li {
+  padding: 0;
+  display: block;
+  list-style: none;
+  margin: 30px 0 0 0;
+}
+.baby-form label {
+  width: 320px;
+  margin: 0 0 0 0;
+  padding: 0px;
+  display: block;
+  font-weight: normal;
+}
+.baby-form input {
+  width: 320px;
+  margin: 2px 0 0 0;
+  padding: 10px;
+  border: 1px solid #333333;
+  font-size: 20px;
+  color: #666666;
+}
+.baby-form .button-primary {
+  width: 342px;
+  margin: 0 0 0 0;
+  background: #4B99AD;
+  padding: 15px 15px 15px 15px;
+  border: none;
+  color: #fff;
+  -webkit-appearance: none;
+}
+
+.results {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.results ul {
+  list-style-type: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+.results li {
+  list-style: none;
+  height: 0;
+  line-height: 2em;
+  margin: 0;
+  padding: 0 0.5em;
+  overflow: hidden;
+  width: 10em;
+  background: #4b99Ad;
+  font-size: 20px;
+  color: #ffffff;
+}
+.results li.show {
+  height: 2em;
+  margin: 2px 0;
+}
+
+.results li.highlight {
+  font-weight: bold;
+}
+
+.swing {
+  perspective: 100px;
+}
+
+.swing li {
+  opacity: 0;
+  transform: rotateX(-90deg);
+  transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
+}
+
+.swing li.show {
+  opacity: 1;
+  transform: none;
+  transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
+}
+
+.footer {
+  margin: 25px auto;
+  max-width: 400px;
+  width: 100%;
+  padding: 0 0 0 0;
+  font-size: 12px;
+}

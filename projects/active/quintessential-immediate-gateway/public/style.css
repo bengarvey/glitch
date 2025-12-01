@@ -1,0 +1,44 @@
+/* styles */
+/* called by your view template */
+
+/* You might want to try something fancier: */
+/* less: http://lesscss.org/ */
+
+* {
+  box-sizing: border-box;
+}
+
+body, html, canvas {
+  height: 100%;
+}
+
+canvas {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+h1 {
+  font-weight: bold;
+  color: #ff0099;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p {
+  max-width: 600px;
+}
+
+.nicejob {
+  text-decoration: line-through;
+}

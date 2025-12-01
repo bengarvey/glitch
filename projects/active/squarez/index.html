@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+
+      body {
+        margin: 0 0 0 0;
+        font-size: 16px;
+        font-family: "Arial", sans-serif;
+        background: #000000;
+        padding: 0 0 0 0;
+        overflow: hidden;
+      }   
+
+      .ui {
+        width: 600px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #F9F9F9;
+        scroll: auto;
+      }   
+
+      .section {
+        display: flex;
+        flex-direction: column;
+      }   
+
+      input {
+        display: inline-block;
+        font-size: 16px;
+      }   
+
+      input[type=text] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }   
+
+      .closed {
+        opacity: 0;
+        transition: 0.5s;
+      }   
+
+      .open {
+        opacity: 0.8;
+        transition: 0.5s;
+      }   
+
+      .toggle {
+        position: fixed;
+        top: 0;
+        left: 0;
+        opacity: 0.1;
+      }   
+
+      button {
+        background-color: #333333;
+        border: none;
+        color: white;
+        padding: 12px 36px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }   
+
+      .btn-save {
+        background-color: #11FF66;
+      }   
+
+      .btn-mini {
+        padding: 4px 10px;
+      }   
+
+      canvas {
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+      }   
+
+    </style>
+    <script src="globals.js"></script>
+    <script src="Circle.js"></script>
+    <script src="CircleFactory.js"></script>
+    <script src="Gravity.js"></script>
+    <script src="World.js"></script>
+    <script src="Config.js"></script>
+    <script>
+
+      var conf, cf, canvas, world = null;
+      var limit = 50000;
+      function init(config) {
+        conf = new Config(config);
+        cf = new CircleFactory(config.cf);
+        canvas = document.getElementById('space');
+        world = new World(config.world, canvas);
+        addListeners();
+        start();
+      }   
+
+      function start() {
+        var scale = 10; 
+        //var total = Math.floor(( (window.innerWidth/scale) * (window.innerHeight/scale)));
+        var total = 50;
+        var width = 10;
+        //var width = Math.floor(window.innerWidth/scale);
+        var lines = getLines(total, width);
+        world.setEntities(lines);
+        world.start();
+      }   
+
+      function translate(value, scale, offset) {
+        return (value * scale) + offset;
+      }   
+
+      function getRandomColor() {
+        function num() { return Math.floor(Math.random()*255); };
+        return `rgba(${num()},${num()},${num()},${Math.random()})`;
+      }   
+
+      function getLines(total, width) {
+        var lines = []; 
+        for(var i=0; i<total; i++) {
+          lines.push(getLine(width));
+        }   
+
+        function getLine(width) {
+          cval = Math.floor(Math.random()*200) + 55;
+          line = { 
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2,
+            //x: Math.round(Math.random() * window.innerWidth),
+            //y: Math.round(Math.random() * window.innerHeight),
+            offset: 0,
+            scale: 100,
+            stroke: 20,
+            color: getRandomColor(),
+            width: width,
+            dx: 0,
+            dy: width,
+            r: cval,
+            g: cval,
+            b: cval,
+            a: Math.random(),
+
+            fx: 0,
+            fy: 0,
+          }   
+          line.draw = function(context) {
+              drawLine(context, this.x, this.y, this.x + this.dx + this.fx, this.y + this.dy + this.fy,
+                this.color, this.stroke);
+          }   
+
+          line.getNext = function() {
+            line = getLine(this.width);
+            line.x = this.x + this.dx;
+            line.y = this.y + this.dy;
+            var dxdy = getNextDxDy(this.dx, this.dy, this.width);
+            line.dx = dxdy[0];
+            line.dy = dxdy[1];
+            line.stroke += Math.floor(Math.random()*2) - 1;
+            //line.width += Math.floor(Math.random()*10) - 5;
+            line.r = getWalk(this.r, 0, 255);
+            line.g = getWalk(this.g, 0, 255);
+            line.b = getWalk(this.b, 0, 255);
+            line.a = Math.random();
+            line.color =  `rgba(${line.r}, ${line.g}, ${line.b}, ${line.a})`;
+            line = enforceBoundaries(line, line.width);
+            return line;
+          }   
+
+          function enforceBoundaries(entity, width) {
+            holdDx = entity.dx;
+            holdDy = entity.dy;
+            if (entity.x > window.innerWidth) {
+              entity.dx = -1 * width;
+              entity.dy = 0;
+            }   
+            else if (entity.x < 0) {
+              entity.dx = width;
+              entity.dy = 0;
+            }   
+            else if (entity.y > window.innerHeight) {
+              entity.dy = -1 * width;
+              entity.dx = 0;
+            }   
+            else if (entity.y < 0) {
+              entity.dy = width;
+              entity.dx = 0;
+            }   
+            return entity;
+          }   
+
+          function bounce(value, max) {
+            return (value < 0 || value > max) ? -1 : 1;
+          }   
+
+          line.update = function(ticks) {
+              this.fx += Math.random();
+              this.fy += Math.random();
+          }   
+
+          return line;
+        }   
+
+        return lines;
+      }   
+
+    function getWalk(value, min, max) {
+      var result = (Math.floor( (Math.random()*5)-2)) + value;
+      return result >= min && result <= max ? result : value;
+    }   
+
+    function getOffset(value) {
+      return (Math.random() * (value*2)) - value;
+    }   
+
+    function getNextDxDy(dx, dy, width) {
+      var ran = Math.floor(Math.random()*4);
+      if (ran === 0) {
+        return [width, 0]; 
+      }   
+      else if (ran === 1) {
+        return [0, width];
+      }   
+      else if (ran === 2) {
+        return [width * -1, 0]; 
+      }   
+      else {
+        return [0, -1 * width];
+      }   
+    }   
+
+    function drawLine(context, x1, y1, x2, y2, color, stroke) {
+      context.beginPath();
+      context.moveTo(x1, y1);
+      context.lineTo(x2, y2);
+      context.strokeStyle = color;
+      context.lineWidth = stroke;
+      context.stroke();
+
+    }   
+
+      config = { 
+        "ui": {
+          "location": "body"
+        },  
+        "cf": {
+          "qty": 100,
+          "color": "pallete",
+          "radius": [1,5],
+          "x": [0,window.innerHeight],
+          "y": [0,15],
+          "dx": [0,0],
+          "dy": [0,0],
+          "palleteTotal":7
+        },  
+        "world": {
+          "height": "full",
+          "width": "full",
+          "gravity": 1,
+          "boundary": "bounce",
+          "refresh": 1, 
+          "clearCanvas": 1
+        }   
+      }   
+
+    function showUI() {
+      document.getElementById('ui').className = 'ui open';
+    }   
+
+    function hideUI(event) {
+      event.stopPropagation();
+      document.getElementById('ui').className = 'ui closed';
+    }   
+
+    function toggleUI() {
+      var ui = document.getElementById('ui');
+      if (ui.className.match("open")) {
+        replaceClass(ui, 'open', 'closed');
+      }   
+      else if (ui.className.match("closed")) {
+        replaceClass(ui, 'closed', 'open');
+      }   
+      else {
+        ui.className += ' closed';
+      }   
+      return false;
+    }   
+
+    function replaceClass(elem, oldClass, newClass) {
+      elem.className = elem.className.replace(oldClass, newClass);
+    }   
+
+    function saveConfig() {
+      var ui = document.getElementById('ui');
+      var keys = Object.keys(config);
+
+      config.cf = saveConfigNamespace('cf', config.cf);
+      config.world = saveConfigNamespace('world', config.world);
+      world.setConfig(config.world);
+      cf.setConfig(config.cf);
+      start();
+      return false;
+    }   
+
+    function saveConfigNamespace(name, config) {
+      var keys = Object.keys(config);
+      for(var i=0; i<keys.length; i++) {
+        var id = name + '-' + keys[i];
+        var value = document.getElementById(id).value;
+        // Convert csvs to arrays and remove whitespace
+        if (value.match(",")) {
+          value = value.replace(" ", "");
+          value = value.split(",");
+        }   
+        config[keys[i]] = value;
+      }   
+      return config;
+    }   
+
+    function addListeners() {
+      // Pressing ENTER saves the config
+      var body = document.getElementById("body");
+        body.addEventListener("keyup", function(event) {
+          event.preventDefault();
+          if (event.keyCode == 13) {
+            saveConfig();
+          }   
+      }); 
+    }   
+
+    </script>
+  </head>
+  <body id="body" onload="init(config)">
+    <canvas id="space" height="10" width="10"></canvas>
+  </body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

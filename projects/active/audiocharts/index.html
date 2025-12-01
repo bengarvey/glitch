@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>genmusic-01</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css">
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.12/Tone.min.js" defer></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.18/chance.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js" defer></script>
+    <script src="/tonal.min.js" defer></script>  
+    <script src="/script.js" defer></script>    
+    
+  </head>  
+  <body class="sans-serif bg-light-gray pointer">
+    <div id="wrapper dt">
+      <h1 class="pa1">
+        v9
+      </h1>
+      <h2 class="dtc f2 pa2 pa5-ns v-mid vh-50">🔊 Click anywhere to make sounds</h2>  
+      
+      <div id="config" class="pa3 bg-black white vh-50 w-100 db">
+        
+      </div>
+    </div>    
+    
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+
+  </body>
+</html>

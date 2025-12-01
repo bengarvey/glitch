@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>bengarvey's portfolio</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>  
+  <body onload="start('sky')">
+    <div class="header-container">
+    </div>
+    <div class="header-content">
+      <h1>
+        bengarvey
+      </h1>
+      <h3>
+        dataviz, software engineer
+      </h3>
+    </div>
+    <div class="cta">
+      <button class="more" onclick="findOutMore()">
+        find out more
+      </button>   
+    </div>
+    <div class="content">
+      <canvas id="sky" class="sky-canvas" width="300" height="300">
+      </canvas>
+    </div>
+    <div class="content">
+      <h2>About</h2>
+      <p>Ben Garvey is a software engineer at Betterment and has over a decade of experience leading teams to build new products, 
+        re-architecting existing ones, and guiding them through acquisitions, most recently with RJMetrics, Magento and Adobe.   
+      </p>
+      <p>
+        He likes charts and is a frequent speaker on data visualization and the world wide web. He created the <a href="http://budget.brettmandel.com">Bulldog Budget</a> 
+        for Brett Mandel's 2013 campaign for Philadelphia City Controller which was featured on <a href="https://technical.ly/philly/2013/01/23/city-of-philadelphia-budget-visualizatio/">Technically Philly</a>, 
+        <a href="http://www.flyingkitemedia.com/features/opendata022613.aspx">Fying Kite Media</a>, and <a href="http://www.philly.com/philly/blogs/188117212.html?arc404=true">The Philadelphia Inquirer</a>.
+      </p>
+      <p>
+        When he isn't writing code to make charts he's playing with his kids in Collingswood, NJ, reading, or playing music.
+      </p>
+      <p>
+        <a href="https://twitter.com/bengarvey"><img class="icon" src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2Ftwitter-black.png?1540083737063" alt="twitter"></a>
+        <a href="mailto:ben@bengarvey.com"><img class="icon" src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2Femail.png?1540080487296" alt="email"></a>
+        <a href="https://github.com/bengarvey"><img class="icon" src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2Fgithub.png?1540081206960" alt="github"></a>
+        <a href="https://www.linkedin.com/in/bengarvey"><img class="icon-small" src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2FIn-Black-34px-R.png?1540082695281" alt="linked in"></a>
+      </p>
+    </div>
+    <div class="content">
+      <h2>Work & Education</h2>
+      <ul>
+        <li><a href="https://betterment.com">Betterment</a>: Automated financial advice</li>
+        <li><a href="https://rjmetrics.com">RJMetrics</a>: Dataviz and business intelligence (acquired by Magento and Adobe)</li>
+        <li><a href="http://garvey.com">Garvey</a>: CPG industrial automation</li>
+        <li><a href="http://heavengames.com">Heavengames</a>: Content marketing and community management</li>
+        <li>B.S., Computer Science - American University</li>
+      </ul>
+    </div>
+    <div class="content">
+    <h2>Writing</h2>
+      <ol>
+        <li>
+          <a href="https://medium.com/@bengarvey/use-an-updated-at-column-in-your-mysql-table-and-make-it-update-automatically-6bf010873e6a">
+            MySQL created_at
+          </a>
+        </li>
+        <li>
+          <a href="https://medium.com/@bengarvey/making-charts-with-postgres-5700f4c65cc8">
+            Making charts with Postgres
+          </a>
+          </li>
+        <li>
+          <a href="https://medium.com/@bengarvey/multi-dimensional-engineering-management-2cad10fae176">
+            Multi Dimensional Engineering Management
+          </a>
+        </li>
+        <li>
+          <a href="https://medium.com/@bengarvey/lets-talk-about-the-nj-e-zpass-website-b9448d7876f9">
+            Let's talk about the NJ EZ Pass Website
+          </a>
+        </li>
+      </ol>
+    </div>
+    <div class="content">
+      <h2>
+        Code
+      </h2>
+    </div>
+    <div class="grid-container content">
+      <div class="grid-item">
+        <a href="https://beta.observablehq.com/@bengarvey/mapping-indego-bike-2679-w-google-maps">
+          <img alt="Bikes"
+             src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2FScreen%20Shot%202018-09-29%20at%208.48.40%20PM.png?1538268549312"
+             class="responsive"/>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="http://bengarvey.com/lineage">
+          <img alt="Lineage: Genealogical Data Expression Eng"
+             src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2FScreen%20Shot%202018-09-29%20at%209.38.29%20PM.png?1538271598228"
+             class="responsive"/>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="http://plotdevice.bengarvey.com/auto">
+          <img alt="Automobile Deaths"
+             src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2FScreen%20Shot%202018-09-29%20at%209.32.28%20PM.png?1538271218334"
+             class="responsive"/>
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="http://plotdevice.bengarvey.com/cooplovescostumes">
+          <img alt="Twin Peaks Halloween Costumes"
+             src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2Fcoop.png?1538272511966"
+             class="responsive"/>    
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://floating-dots.glitch.me/">
+          <img alt="Floating Dots"
+             src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2FScreen%20Shot%202018-09-29%20at%2010.12.19%20PM.png?1538273557865"
+             class="responsive">
+        </a>
+      </div>
+      <div class="grid-item">
+        <a href="https://take-a-walk.glitch.me/">
+          <img alt="Take A Walk"
+             src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2FScreen%20Shot%202018-08-01%20at%207.21.01%20PM.png?1538273002637"
+             class="responsive">
+        </a>
+      </div>
+    </div>
+    <div class="content">
+      <h2>Slides</h2>
+      <ol>
+        <li>
+          <a href="https://docs.google.com/presentation/d/1QoR-feuV10D-jr-7XEaUZ-hDayDguUpbUtgJz6pGQ_c/edit?usp=sharing">
+            Quantified Negadelphia
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.google.com/presentation/d/142BhRbLHMX_nAE8sbLN0rdYM0leO82egBOB52R-pxow/edit?usp=sharing">
+            Dataviz and Storytelling
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.google.com/presentation/d/1g_IChyFa5utqRD0_7cSaTyOgWFmaIFzN6EV40l7yMbg/edit?usp=sharing">
+            What Happens To Your Code When You Get Acquired
+          </a>
+        </li>
+      </ol>
+    </div>
+    <div class="content">
+      <h2>Data + Journalism</h2>
+      <ol>
+        <li>
+          <a href="https://billypenn.com/2018/03/12/this-sexy-mural-arts-bike-is-the-most-popular-ride-in-all-philly-bike-share/">
+            Finding the Most Popular Indego Bike
+          </a>
+        </li>
+        <li>
+          <a href="https://billypenn.com/2018/04/30/twitter-likes-sheetz-better-than-wawa-a-new-analysis-shows/">
+            Sheetz vs Wawa
+          </a>
+        </li>
+      </ol>
+    </div>
+    <div class="content">
+      <div class="image-container">
+        <img class="responsive image-container" 
+             src="https://cdn.glitch.com/e7c2d33f-038a-4e3a-a8d8-95955e77b4a3%2Flaptop.jpg?1539832636399"/>
+      </div>
+    </div>
+  </body>
+</html>

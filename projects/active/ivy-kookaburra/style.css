@@ -1,0 +1,31 @@
+/* CSS files add styling rules to your content */
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+}
+
+h1 {
+  color: #333333;
+}
+
+.query {
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+}
+
+.button-primary {
+  margin: 5px;
+  padding: 5px;
+  width: 100px;
+  min-height: 30px;
+  background-color: green;
+  color: white;
+}
+
+textarea {
+  margin: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+}

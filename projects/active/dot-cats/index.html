@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;">
+    <title>Dot-Cats</title>
+  <style>
+      body {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      #map {
+        padding: 0px;
+        margin: 0px;
+      }
+    </style>
+    <script src="global.js"></script>
+    <script src="Entity.js"></script>
+    <script src="EntityGenerator.js"></script>
+    <script src="Prey.js"></script>
+    <script src="PreyGenerator.js"></script>
+    <script src="NameGenerator.js"></script>
+    <script src="Cat.js"></script>
+    <script src="CatGenerator.js"></script>
+    <script src="Clan.js"></script>
+    <script src="Dna.js"></script>
+    <script src="Cell.js"></script>
+    <script src="Grid.js"></script>
+    <script src="EntityEncounter.js"></script>
+    <script src="Territory.js"></script>
+    <script src="ScoreBar.js"></script>
+    <script src="Score.js"></script>
+    <script src="TerritoryGenerator.js"></script>
+    <script src="HoverMenu.js"></script>
+    <script src="Draw.js"></script>
+    <script src="World.js"></script>
+  </head>
+  <body onload="go()">
+    <canvas id="map">
+      This is where the canvas would be if your browser supported it.
+    </canvas>
+  </body>
+  <script>
+    function go() { World('map') };
+  </script>
+</html>
