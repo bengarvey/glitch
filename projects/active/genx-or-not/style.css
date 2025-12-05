@@ -129,6 +129,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Very light scaling for our illustration */
@@ -169,7 +172,17 @@ input {
 
 /* Subheading */
 h2 {
-  color: #2800FF;
+  margin: 5px;
+  font-size: 15pt;
+}
+
+h1 { 
+  margin: 5px;
+}
+
+h3 {
+  margin: 5px;
+  font-size: 12pt;
 }
 
 /* Interactive image */
